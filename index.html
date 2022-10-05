@@ -22,85 +22,76 @@
         <div class="header"></div>
         <div class="content"></div>
     
-
-    <div class="content">
-        <img src="https://twedr.com/wp-content/uploads/2021/07/image-11.png" alt="">
-    </div>
    
-    <p>性別: 
-        <input id="man" type="radio" checked="checked" name="sex"/>男
-        <input type="radio" id="woman" name="sex">女
-    </p>
-   
-    <span class="01 title">身　高(cm):</span>
-    <input id="height" placeholder="請輸入身高" type="text" size="11" style="border: 1px solid #0B6060">
+    <span class="01 title">度數:</span>
+    <input id="deg" placeholder="請輸入度數" type="text" size="11" style="border: 1px solid #0B6060">
     <br>
 
-    <span class="01 title">體　重(kg):</span>
-    <input id="weight" placeholder="請輸入體重" type="text" size="11" style="border: 1px solid #0B6060">
+    <span class="01 title">分:</span>
+    <input id="min" placeholder="請輸入分" type="text" size="11" style="border: 1px solid #0B6060">
+    <br>
+
+    <span class="01 title">秒:</span>
+    <input id="sec" placeholder="請輸入秒" type="text" size="11" style="border: 1px solid #0B6060">
     <br>
     
-    <span class="01">你的BMI為:</span>
-    <input   id="bodymean" type="text" size="11" style="border: 1px solid #0B6060">
+    <span class="01">換算為度結果為:</span>
+    <input   id="trandeg" type="text" size="11" style="border: 1px solid #0B6060">
     <br>
-   
-    <span class="01">體位狀態為:</span>
-    <input   id="bodysize"  type="text" size="11" style="border: 1px solid #28a5a5" >
-    <br>
+    <button onclick="caldegree()" type="button" class="btn btn-primary">換算為度</button>
+    <div id="trde"></div>
     
-
-    <button onclick="calBMI()" type="button" class="btn btn-primary">計算BMI</button>
-    <button type="button" class="btn btn-success">Success</button>
-    <div id="bmi"></div>
+    
+    <span class="01">請輸入度數:</span>
+    <input   id="transec"  type="text" size="11" style="border: 1px solid #28a5a5" >
+    
+    <span class="01">換算為度分秒結果為:</span>
+    <input   id="trandms" type="text" size="11" style="border: 1px solid #0B6060">
+    <br>
+    <br>
+    <button onclick="calsecond()" type="button" class="btn btn-success">換算為度分秒</button>
+    <div id="trsc"></div>
 
     
     
     <script>
-        function calBMI(){
-            var h, w,b
-            var normal='體重正常',light='體重過輕',heavy='體重過重'
-            h = parseInt(document.getElementById('height').value)
-            w = parseInt(document.getElementById('weight').value)
-            console.log(h, w/h/h)
-            document.getElementById('bodymean').value = bmi2(w,h)
-            let bmi = bmi2(w,h)
-        if(bmi<18.5)
-        {
-            result = '體重過輕' 
-            document.getElementById('bodysize').value = result 
+        function caldegree(){
+            var d,m,s
+            d = parseInt(document.getElementById('deg').value)
+            m = parseInt(document.getElementById('min').value)
+            s = parseInt(document.getElementById('sec').value)
+            console.log(d,m,s)
+            
+            document.getElementById('trandeg').value = tran1(d,m,s)
+            
+
         }
-        else if (bmi>=18.5 && bmi<24)
-        {
-            result = '體重正常'
-            document.getElementById('bodysize').value = result
-        }
-        else if (bmi>=24 && bmi<30)
-        {
-            result = '過重'
-            document.getElementById('bodysize').value = result
-        }
-        else if (bmi>=27 && bmi<30)
-        {
-            result = '輕度肥胖'
-            document.getElementById('bodysize').value = result
-        }
-        else if (bmi>=30 && bmi<35)
-        {
-            result = '中度肥胖'
-            document.getElementById('bodysize').value = result
-        }
-        else
-        {
-            result = '重度肥胖'
-            document.getElementById('bodysize').value = result
+        function calsecond()
+        {   
+            var dms
+            dms = parseFloat(document.getElementById('transec').value)
+            
+            document.getElementById('trandms').value = tandms(dms)
+
         }
     
-        }
-    
-        function bmi2(w,h){
-        h=h/100
-        return(w/(h*h)).toFixed(1)
+        function tran1(d,m,s){
+        d=d
+        m=m/60
+        s=s/3600
+        return(d+m+s)
        }
+
+       function tandms(dms)
+       {
+        dms = parseFloat(document.getElementById('transec').value)
+        d=Math.floor(dms)
+        m=Math.floor((dms-d)*60)
+        s=parseInt((dms-d-m/60)*3600)
+        st=d+'度'+m+'分'+s+'秒'
+        return(st)
+       }
+       
     </script>
     </div>
 </body>
