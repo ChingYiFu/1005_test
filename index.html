@@ -51,7 +51,8 @@
     <br>
     <button onclick="calsecond()" type="button" class="btn btn-success">換算為度分秒</button>
     <div id="trsc"></div>
-
+    <button onclick="clearF()" type="button" class="btn btn-primary">清除換算結果</button>
+    <div id="clr"></div>
     
     
     <script>
@@ -91,6 +92,12 @@
         st=d+'度'+m+'分'+s+'秒'
         return(st)
        }
+       function clearF() {
+      var grab = document.getElementById("name");
+        if (grab.value !="") {
+            grab.value = "";
+        }
+        }
        
     </script>
     </div>
